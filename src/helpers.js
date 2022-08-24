@@ -3,5 +3,6 @@ export function unescapeHtml(safe) {
             .replace(/&lt;/g, '<')
             .replace(/&gt;/g, '>')
             .replace(/&quot;/g, '"')
-            .replace(/&#039;/g, "'");
+            .replace(/&#039;/g, "'")
+            .replace(/&eacute;/g, "é");
     }
