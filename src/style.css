@@ -12,7 +12,7 @@ button {
     padding: .5em 1em;
     border: none;
     margin: 30px 10px;
-    
+    cursor: pointer;
 }
 .container {
     margin: 0 auto;
@@ -26,7 +26,7 @@ button {
     justify-content: space-evenly;
 }
 .question {
-    width: 80%;
+    width: 90%;
     padding-bottom: 10px;
     padding-top: 20px;
     border-bottom: 1px solid #4D5B9E;
@@ -39,7 +39,7 @@ button {
     
 }
 .answer {
-    font-size: 10px;
+    font-size: .75rem;
     font-weight: 500;
     color: #293264;
     border: 1px solid #4D5B9E;
@@ -51,8 +51,9 @@ button {
     text-align: center;
 }
 .answer:hover {
-    background-color: #D6DBF5;
+    background-color: #D6DBF5; 
     color: #293264;
+    cursor: pointer;
 }
 
 .footer {
@@ -62,4 +63,13 @@ button {
 .footer > span {
     font-weight: 700;
     color: #293264;
+}
+
+@media (min-width: 900px) {
+    .answer {
+        font-size: 1rem;
+    }
+    .question {
+        font-size: 0.9rem;
+    }
 }

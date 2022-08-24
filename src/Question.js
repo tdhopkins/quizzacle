@@ -9,10 +9,8 @@ export default function Question(props){
                    props.qa.ans_loc === i ? 
                          "#94D7A2" 
                          : (props.qa.selected === i ? "#F8BCBC" : "#F5F7FB")
-            : ( props.qa.selected === i ? "#D6DBF5" : "#F5F7FB")}
-        
-        //const styles = { backgroundColor: props.qa.selected === i ? "#D6DBF5" : "white" }
-        
+            : ( props.qa.selected === i ? "#bac2f0" : "#F5F7FB")}
+
         return <div key={i} className="answer" 
                      style={ styles  }
                      onClick={()=>props.select(props.qa.id, i)}>

@@ -17,16 +17,12 @@ export default function App() {
         setQuestions( prev => { 
             return prev.map( qaObj => {
                 if( qaObj.id === qId ){
-                    // console.log(qaObj) 
-                    // Set qaObj.selected: ansId}
                     return {...qaObj, selected: ansId}
                 } else {
                      return qaObj;
                 }
             })
         })
-        
-          
     }
     
     
@@ -58,7 +54,7 @@ export default function App() {
     function submitAnswers() {
         if( !done ){
             setDone( true )
-            const numCorrect = questions.map( q => q.ans_loc === q.selected ? 1 : 0 ).reduce((a,b) => a+ b, 0 )
+            const numCorrect = questions.map( q => q.ans_loc === q.selected ? 1 : 0 ).reduce((a,b) => a + b, 0 )
             setNumCorrect( numCorrect )
         } else {
             getQuestionsFromAPI()
