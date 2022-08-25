@@ -4,5 +4,6 @@ export function unescapeHtml(safe) {
             .replace(/&gt;/g, '>')
             .replace(/&quot;/g, '"')
             .replace(/&#039;/g, "'")
-            .replace(/&eacute;/g, "é");
+            .replace(/&eacute;/g, "é")
+            .replace(/&auml;/g, "Ä");
     }
