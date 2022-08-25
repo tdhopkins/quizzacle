@@ -85,13 +85,16 @@ export default function App() {
     // console.log("Started: ", isGameStarted, " NumQs: ", questions.length)
     return(
         <main>
-            { isGameStarted  ?            
-                <div className="container">
-                    {questionElements}
-                    <div className="footer">
-                        { questions.length && <><span>{ done && `You scored ${numCorrect}/${numQuestions} correct answers` }</span><button onClick={submitAnswers}>{done ?  "Play Again" : "Submit" }</button></>  }           
+            { isGameStarted  ?    
+                questions.length === +numQuestions ?
+                    <div className="container">
+                        {questionElements}
+                        <div className="footer">
+                            { questions.length && <><span>{ done && `You scored ${numCorrect}/${numQuestions} correct answers` }</span><button onClick={submitAnswers}>{done ?  "Play Again" : "Submit" }</button></>  }           
+                        </div>
                     </div>
-                </div>
+                :
+                    null
             : 
                 <div className="container">
                     <div className="game-text">
