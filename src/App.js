@@ -34,7 +34,7 @@ export default function App() {
 
     
     function getQuestionsFromAPI() {
-        fetch(`https://opentdb.com/api.php?amount=${+numQuestions}&difficulty=medium&type=multiple`)
+        fetch(`https://opentdb.com/api.php?amount=${+numQuestions}&type=multiple`)
             .then( res => res.json())
             .then( data => {
                 console.log("returned: ",data.results.length)
