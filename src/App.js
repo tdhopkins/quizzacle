@@ -8,12 +8,13 @@ export default function App() {
     const [questions, setQuestions] = useState( [] )
     const [done, setDone] = useState(false)
     const [numCorrect, setNumCorrect] = useState(0)
+    const [isGameStarted, setIsGameStarted] = useState(false)
     
     const questionElements = questions.map( (d,i) => (
             <Question key={i} qa={d} select={selectAns} done={done} />) )
     
     function selectAns(qId, ansId) {
-        console.log("Question: ", qId, " Ans: ", ansId)
+        // console.log("Question: ", qId, " Ans: ", ansId)
         setQuestions( prev => { 
             return prev.map( qaObj => {
                 if( qaObj.id === qId ){
@@ -61,7 +62,11 @@ export default function App() {
             setDone( false )
         }
     }
-    
+
+    function startGame() {
+        setIsGameStarted( true )
+    }
+
     useEffect(()=>{
         getQuestionsFromAPI()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,12 +74,21 @@ export default function App() {
     
     return(
         <main>
-            <div className="container">
-                {questionElements}
-                <div className="footer">
-                    { questions.length && <><span>{ done && `You scored ${numCorrect}/5 correct answers` }</span><button onClick={submitAnswers}>{done ?  "Play Again" : "Submit" }</button></>  }           
+            { isGameStarted ?            
+                <div className="container">
+                    {questionElements}
+                    <div className="footer">
+                        { questions.length && <><span>{ done && `You scored ${numCorrect}/5 correct answers` }</span><button onClick={submitAnswers}>{done ?  "Play Again" : "Submit" }</button></>  }           
+                    </div>
                 </div>
-            </div>
+            : 
+                <div className="container">
+                    <div className="game-text">
+                        <h1>QUIZZACLE</h1>
+                        <button className="start-btn" onClick={startGame}>Start Quiz</button>
+                    </div>
+                </div>
+            }
         </main>
     )
     

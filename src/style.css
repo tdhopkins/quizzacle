@@ -65,6 +65,29 @@ button {
     color: #293264;
 }
 
+.game-text {
+    /* border: 1px solid red; */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.start-btn {
+    padding: 1em 2em; 
+    font-family: 'Karla', sans-serif;
+    font-size: 1.25rem;  
+}
+
+.game-text > h1 {
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    color: #293264;
+    letter-spacing: 2.5px;
+}
+
+
 @media (min-width: 900px) {
     .answer {
         font-size: 1rem;
