@@ -72,9 +72,9 @@ export default function App() {
     useEffect(()=>{
         isGameStarted && getQuestionsFromAPI()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[numQuestions, isGameStarted])
+    },[ numQuestions, isGameStarted])
 
-    const optionEls = [5,10, 15,20].map( el => <option key={el} value={`${el}`}>{el}</option> )
+    // const optionEls = [5,10, 15,20].map( el => <option key={el} value={`${el}`}>{el}</option> )
 
     function handleNumQuestions(e) {
         e.preventDefault()
@@ -82,26 +82,22 @@ export default function App() {
 
         setNumQuestions( value )
     }
-    
+    // console.log("Started: ", isGameStarted, " NumQs: ", questions.length)
     return(
         <main>
-            { isGameStarted ?            
+            { isGameStarted  ?            
                 <div className="container">
                     {questionElements}
                     <div className="footer">
-                        { questions.length && <><span>{ done && `You scored ${numCorrect}/5 correct answers` }</span><button onClick={submitAnswers}>{done ?  "Play Again" : "Submit" }</button></>  }           
+                        { questions.length && <><span>{ done && `You scored ${numCorrect}/${numQuestions} correct answers` }</span><button onClick={submitAnswers}>{done ?  "Play Again" : "Submit" }</button></>  }           
                     </div>
                 </div>
             : 
                 <div className="container">
                     <div className="game-text">
                         <h1>QUIZZACLE</h1>
-                        {/* <p>Number of Questons:</p><select value={numQuestions} onChange={handleNumQuestions} >
-                        {optionEls}
-                        </select> */}
                         <label>Num Questions</label>
-                            <input type="range" min="5" max="25" step="5" value={numQuestions} onChange={handleNumQuestions} />
-                        
+                        <input type="range" min="5" max="25" step="5" value={numQuestions} onChange={handleNumQuestions} />
                         <h3>{numQuestions}</h3>
                         <button className="start-btn" onClick={startGame}>Start Quiz</button>
                     </div>
