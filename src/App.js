@@ -9,6 +9,7 @@ export default function App() {
     const [done, setDone] = useState(false)
     const [numCorrect, setNumCorrect] = useState(0)
     const [isGameStarted, setIsGameStarted] = useState(false)
+    const [numQuestions, setNumQuestions] = useState(5)
     
     const questionElements = questions.map( (d,i) => (
             <Question key={i} qa={d} select={selectAns} done={done} />) )
@@ -33,9 +34,10 @@ export default function App() {
 
     
     function getQuestionsFromAPI() {
-        fetch("https://opentdb.com/api.php?amount=5&difficulty=medium&type=multiple")
+        fetch(`https://opentdb.com/api.php?amount=${+numQuestions}&difficulty=medium&type=multiple`)
             .then( res => res.json())
             .then( data => {
+                console.log("returned: ",data.results.length)
                 return data.results.map( (quiz, i) => {
                     const randLoc = randomLoc()
                     quiz.incorrect_answers.splice(randLoc,0,quiz.correct_answer)
@@ -68,9 +70,18 @@ export default function App() {
     }
 
     useEffect(()=>{
-        getQuestionsFromAPI()
+        isGameStarted && getQuestionsFromAPI()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    },[numQuestions, isGameStarted])
+
+    const optionEls = [5,10, 15,20].map( el => <option key={el} value={`${el}`}>{el}</option> )
+
+    function handleNumQuestions(e) {
+        e.preventDefault()
+        const {value} = e.target
+
+        setNumQuestions( value )
+    }
     
     return(
         <main>
@@ -85,6 +96,13 @@ export default function App() {
                 <div className="container">
                     <div className="game-text">
                         <h1>QUIZZACLE</h1>
+                        {/* <p>Number of Questons:</p><select value={numQuestions} onChange={handleNumQuestions} >
+                        {optionEls}
+                        </select> */}
+                        <label>Num Questions</label>
+                            <input type="range" min="5" max="25" step="5" value={numQuestions} onChange={handleNumQuestions} />
+                        
+                        <h3>{numQuestions}</h3>
                         <button className="start-btn" onClick={startGame}>Start Quiz</button>
                     </div>
                 </div>

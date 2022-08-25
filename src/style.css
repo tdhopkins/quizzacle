@@ -85,6 +85,16 @@ button {
     letter-spacing: 2.5px;
 }
 
+.game-text > label {
+    font-size: 12px;
+    margin-bottom: 15px;
+    color:#4D5B9E;
+    font-weight: 700;
+}
+.game-text > p {
+    color:#4D5B9E;
+}
+
 
 @media (min-width: 900px) {
     .answer {
