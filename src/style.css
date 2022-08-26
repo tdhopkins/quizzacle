@@ -4,6 +4,10 @@
 body {
     font-family: Inter, sans-serif;
     background: #F5F7FB;
+    padding: 0;
+}
+main {
+    height: 100vh;
 }
 button {
     background-color: #4D5B9E;
